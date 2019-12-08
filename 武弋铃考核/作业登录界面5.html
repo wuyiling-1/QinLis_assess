@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>橘皮书注册</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <style type="text/css">
+        body {
+            color: #f3a033;
+            min-height: 110vh;
+            background-image: linear-gradient(120deg, #9fa5d5, #e8f5c8);
+        }
+        
+        .button {
+            display: block;
+            width: 300px;
+            height: 30px;
+            border: none;
+            background: linear-gradient(120deg, #F3A033, #0c7bb3);
+            background-size: 200%;
+            color: white;
+            outline: none;
+            cursor: pointer;
+            transition: .5s;
+        }
+        
+        .button:hover {
+            background-position: right;
+        }
+        
+        .inlog-form {
+            width: 360px;
+            background: #f1f1f1;
+            height: 500px;
+            padding: 80px 40px;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .div1 {
+            color: #F3A033;
+            border: 2px solid #f3a033;
+            background: white;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .div2 {
+            margin-left: 70px;
+        }
+    </style>
+
+</head>
+
+
+
+
+<body>
+    <form class="inlog-form">
+        <center>
+            <div>
+                <form action="" method="POST">
+                    <h3>用户注册</h3>
+                    <hr>
+                    <p>学号: <input type="text" class="div1" id="qq" onblur="inputOnBlur()" placeholder="请填写学号"></p>
+                    <p>身份证号: <input class="div1" type="text" id="idnumber" onblur="abc()" placeholder="请填写身份证号"></p>
+                    <p>姓名： <input class="div1" id="name" type="text" placeholder="请填写姓名"></p>
+        </center>
+        <div class="div2">
+            性别：
+
+            <input type="radio" required=" required " value="answer1" name="1">男 <input type="radio" required=" required " value="answer1" name="1">女</p>
+        </div>
+        <center>
+            <p><input type="submit" name="提交信息" onclick="confirmInformation()" class="button" id="btn" value="提交"></p>
+            <p>
+                <input type="button" class="button" value="上一步" onclick="window.location.href='作业登录界面.html';">
+            </p>
+
+
+            </form>
+            </div><br><br><br>
+            <h1>THE ORANGE BOOK</h1>
+        </center>
+
+        <script type="text/javascript">
+            var oQQ = document.getElementById('qq')
+            var oName = document.getElementById('name')
+            var oIdnumber = document.getElementById('idnumber')
+
+            function inputOnBlur() {
+
+                var ipt_qq = oQQ.value
+
+                var res = Number(ipt_qq)
+
+                if (isNaN(res)) {
+                    alert('学号格式不正确，必须是数字')
+                    return;
+                }
+
+                if (ipt_qq.length != 10) {
+                    alert("学号的长度不正确")
+
+                    return;
+                }
+            }
+
+            function abc() {
+                var ipt_idnumber = oIdnumber.value
+
+                var abc = Number(ipt_idnumber)
+                if (isNaN(abc)) {
+                    alert('身份证号格式不正确，必须是数字')
+                    return;
+                }
+
+                if (ipt_idnumber.length != 18) {
+                    alert("身份证号的长度不正确")
+                    return;
+                }
+            }
+
+            function confirmInformation() {
+
+                var information = {
+                    "userData": [{
+                        "qq": "1903060401",
+                        "name": "武弋铃",
+                        "idnumber": "211302200202013228"
+                    }, {
+                        "qq": "1903060402",
+                        "name": "李菲",
+                        "idnumber": "211302200202023227"
+                    }]
+                }
+
+                var ipt_qq = oQQ.value
+                var ipt_name = oName.value
+                var ipt_idnumber = oIdnumber.value
+
+                for (var i = 0; i < information.userData.length; i++) {
+                    if (information.userData[i].name == ipt_name &&
+                        information.userData[i].idnumber == ipt_idnumber &&
+                        information.userData[i].qq == ipt_qq) {
+                        alert("注册成功")
+                        return
+                    } else {
+                        alert("没有查询到您的信息")
+                    }
+                    return
+                }
+            }
+        </script>
+
+</body>
+
+</html>
